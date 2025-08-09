@@ -1,103 +1,164 @@
+"use client"
+
+import { ArrowRight, Mail } from "lucide-react";
+import Section from "@/components/section";
+import SiteBackground from "../components/siteBackground";
+
 import Image from "next/image";
-
+import Link from "next/link"
+import { motion } from "framer-motion"
+import { Badge } from "@/components/ui/badge";
 export default function Home() {
+  console.log({ motion, Badge, Link, ArrowRight, Mail, Image });
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-dvh flex flex-col">
+      <SiteBackground />
+      <main className="flex-1">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <Section id="sobre-mi" title="Sobre mí" subtitle="Conoce al desarrollador">
+          <div className="grid lg:grid-cols-[1fr_320px] gap-8 items-start">
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <p className="text-zinc-300">
+                Soy un desarrollador full‑stack con enfoque en construir experiencias web rápidas, accesibles y bien
+                diseñadas. Me encanta trabajar con React, Next.js y TypeScript, y tengo experiencia integrando APIs y
+                servicios cloud.
+              </p>
+              <p className="text-zinc-300">
+                Disfruto transformar ideas en productos reales: desde el diseño de la arquitectura hasta el despliegue y
+                observabilidad. Aquí encontrarás algunos de mis proyectos personales, donde exploro nuevas tecnologías y buenas
+                prácticas modernas.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS"].map((t) => (
+                  <Badge
+                    key={t}
+                    variant="secondary"
+                    className="border-emerald-500/20 text-emerald-300 bg-emerald-950/30"
+                  >
+                    {t}
+                  </Badge>
+                ))}
+              </div>
+              <div className="flex gap-3 pt-2">
+                <Link
+                  href="#proyectos"
+                  className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-neutral-900 bg-emerald-400 hover:bg-emerald-300 transition-colors"
+                >
+                  Ver Proyectos <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="#contacto"
+                  className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium border border-white/10 hover:bg-white/5 text-zinc-200 transition-colors"
+                >
+                  Contacto <Mail className="w-4 h-4" />
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-black/30"
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <Image
+                src="/illustrated-professional-profile.png"
+                alt="Foto de perfil del desarrollador"
+                fill
+                className="object-cover object-center"
+                priority
+              />
+              <div className="absolute inset-0 ring-1 ring-white/10 rounded-2xl pointer-events-none" />
+            </motion.div>
+          </div>
+        </Section>
+
+        <Section id="habilidades" title="Habilidades" subtitle="Tecnologías con las que trabajo">
+          <motion.div
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.06 } }
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {[
+              "React",
+              "Next.js",
+              "TypeScript",
+              "Node.js",
+              "Tailwind",
+              "Pruebas",
+            ].map((name) => (
+              <motion.div
+                key={name}
+                className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 p-3 text-sm text-zinc-200 backdrop-blur"
+                variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+              >
+                <div className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
+                <span>{name}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Section>
+
+        <Section id="proyectos" title="Proyectos" subtitle="Web apps personales">
+          <motion.div
+            className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
           >
-            Read our docs
-          </a>
-        </div>
+          </motion.div>
+          <div className="mt-8 text-center">
+            <Link
+              href="#contacto"
+              className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-neutral-900 bg-emerald-400 hover:bg-emerald-300 transition-colors"
+            >
+              ¿Te gusta lo que ves? Hablemos <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </Section>
+
+        <Section id="contacto" title="Contacto" subtitle="¿Tienes una idea? Conectemos">
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <h3 className="text-xl font-semibold text-zinc-100">Trabajemos juntos</h3>
+              <p className="text-zinc-300">
+                Estoy abierto a propuestas de trabajo, freelance y colaboraciones. Completa el formulario y te responderé lo
+                antes posible.
+              </p>
+              <ul className="space-y-2 text-sm text-zinc-400">
+                <li className="flex items-center gap-2">
+                  <span className="h-2 w-2 bg-emerald-400 rounded-full" />
+                  {"tu.email@ejemplo.com"}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-2 w-2 bg-emerald-400 rounded-full" />
+                  {"Ubicación: Remoto / Híbrido"}
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </Section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
