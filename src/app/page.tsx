@@ -12,6 +12,8 @@ import ContactForm from "@/components/ContactForm";
 import Hero from "@/components/hero";
 import ExperienceCard from "@/components/experienceCard";
 import { experiences } from "@/lib/experience";
+import { projects } from "@/lib/project";
+import ProjectCard from "@/components/projectCard";
 export default function Home() {
   console.log({ motion, Badge, Link, ArrowRight, Mail, Image });
   return (
@@ -129,7 +131,7 @@ export default function Home() {
           </motion.div>
         </Section>
 
-        {/* <Section id="proyectos" title="Proyectos" subtitle="Web apps personales">
+        <Section id="proyectos" title="Proyectos" subtitle="Web apps personales">
           <motion.div
             className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6"
             initial="hidden"
@@ -137,6 +139,10 @@ export default function Home() {
             viewport={{ once: true, amount: 0.2 }}
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
           >
+            {projects.map((p) => (
+              <ProjectCard key={p.slug} project={p} />
+            ))}
+
           </motion.div>
           <div className="mt-8 text-center">
             <Link
@@ -146,7 +152,7 @@ export default function Home() {
               ¿Te gusta lo que ves? Hablemos <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-        </Section> */}
+        </Section>
 
         <Section id="contacto" title="Contacto" subtitle="¿Tienes una idea? Conectemos">
           <div className="grid md:grid-cols-2 gap-8">
