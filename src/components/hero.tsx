@@ -31,12 +31,12 @@ export default function Hero() {
                             usuarios.
                         </p>
                         <div className="flex flex-wrap gap-3">
-                            {/* <Link
+                            <Link
                                 href="#proyectos"
                                 className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium text-neutral-900 bg-emerald-400 hover:bg-emerald-300 transition-colors"
                             >
                                 Ver Proyectos <ArrowRight className="w-4 h-4" />
-                            </Link> */}
+                            </Link>
                             <Link
                                 href="https://github.com/Akvaro03"
                                 target="_blank"

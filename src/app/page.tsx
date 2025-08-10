@@ -14,6 +14,7 @@ import ExperienceCard from "@/components/experienceCard";
 import { experiences } from "@/lib/experience";
 import { projects } from "@/lib/project";
 import ProjectCard from "@/components/projectCard";
+import { skills } from "@/lib/skills";
 export default function Home() {
   console.log({ motion, Badge, Link, ArrowRight, Mail, Image });
   return (
@@ -41,7 +42,7 @@ export default function Home() {
                 prácticas modernas.
               </p>
               <div className="flex flex-wrap gap-2">
-                {["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS"].map((t) => (
+                {skills.map((t) => (
                   <Badge
                     key={t}
                     variant="secondary"
@@ -52,12 +53,12 @@ export default function Home() {
                 ))}
               </div>
               <div className="flex gap-3 pt-2">
-                {/* <Link
+                <Link
                   href="#proyectos"
                   className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-neutral-900 bg-emerald-400 hover:bg-emerald-300 transition-colors"
                 >
                   Ver Proyectos <ArrowRight className="w-4 h-4" />
-                </Link> */}
+                </Link>
                 <Link
                   href="#contacto"
                   className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium border border-white/10 hover:bg-white/5 text-zinc-200 transition-colors"
@@ -97,14 +98,7 @@ export default function Home() {
               show: { transition: { staggerChildren: 0.06 } }
             }}
           >
-            {[
-              "React",
-              "Next.js",
-              "TypeScript",
-              "Node.js",
-              "Tailwind",
-              "Pruebas",
-            ].map((name) => (
+            {skills.map((name) => (
               <motion.div
                 key={name}
                 className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 p-3 text-sm text-zinc-200 backdrop-blur"
