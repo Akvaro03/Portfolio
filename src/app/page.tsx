@@ -10,6 +10,8 @@ import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge";
 import ContactForm from "@/components/ContactForm";
 import Hero from "@/components/hero";
+import ExperienceCard from "@/components/experienceCard";
+import { experiences } from "@/lib/experience";
 export default function Home() {
   console.log({ motion, Badge, Link, ArrowRight, Mail, Image });
   return (
@@ -110,6 +112,19 @@ export default function Home() {
                 <div className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
                 <span>{name}</span>
               </motion.div>
+            ))}
+          </motion.div>
+        </Section>
+        <Section id="experiencia" title="Experiencia" subtitle="Trayectoria profesional">
+          <motion.div
+            className="space-y-8"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
+          >
+            {experiences.map((exp, i) => (
+              <ExperienceCard key={i} experience={exp} />
             ))}
           </motion.div>
         </Section>
