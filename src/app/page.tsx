@@ -8,13 +8,15 @@ import Image from "next/image";
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge";
+import ContactForm from "@/components/ContactForm";
+import Hero from "@/components/hero";
 export default function Home() {
   console.log({ motion, Badge, Link, ArrowRight, Mail, Image });
   return (
     <div className="min-h-dvh flex flex-col">
       <SiteBackground />
       <main className="flex-1">
-
+        <Hero />
         <Section id="sobre-mi" title="Sobre mí" subtitle="Conoce al desarrollador">
           <div className="grid lg:grid-cols-[1fr_320px] gap-8 items-start">
             <motion.div
@@ -46,12 +48,12 @@ export default function Home() {
                 ))}
               </div>
               <div className="flex gap-3 pt-2">
-                <Link
+                {/* <Link
                   href="#proyectos"
                   className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-neutral-900 bg-emerald-400 hover:bg-emerald-300 transition-colors"
                 >
                   Ver Proyectos <ArrowRight className="w-4 h-4" />
-                </Link>
+                </Link> */}
                 <Link
                   href="#contacto"
                   className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium border border-white/10 hover:bg-white/5 text-zinc-200 transition-colors"
@@ -60,7 +62,6 @@ export default function Home() {
                 </Link>
               </div>
             </motion.div>
-
             <motion.div
               className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-black/30"
               initial={{ opacity: 0, scale: 0.98 }}
@@ -77,6 +78,7 @@ export default function Home() {
               />
               <div className="absolute inset-0 ring-1 ring-white/10 rounded-2xl pointer-events-none" />
             </motion.div>
+
           </div>
         </Section>
 
@@ -112,7 +114,7 @@ export default function Home() {
           </motion.div>
         </Section>
 
-        <Section id="proyectos" title="Proyectos" subtitle="Web apps personales">
+        {/* <Section id="proyectos" title="Proyectos" subtitle="Web apps personales">
           <motion.div
             className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6"
             initial="hidden"
@@ -129,7 +131,7 @@ export default function Home() {
               ¿Te gusta lo que ves? Hablemos <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-        </Section>
+        </Section> */}
 
         <Section id="contacto" title="Contacto" subtitle="¿Tienes una idea? Conectemos">
           <div className="grid md:grid-cols-2 gap-8">
@@ -148,7 +150,7 @@ export default function Home() {
               <ul className="space-y-2 text-sm text-zinc-400">
                 <li className="flex items-center gap-2">
                   <span className="h-2 w-2 bg-emerald-400 rounded-full" />
-                  {"tu.email@ejemplo.com"}
+                  {"alvaroballarini03@gmail.com"}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-2 w-2 bg-emerald-400 rounded-full" />
@@ -156,9 +158,23 @@ export default function Home() {
                 </li>
               </ul>
             </motion.div>
+            <ProjectContactCard />
           </div>
         </Section>
       </main>
     </div>
   );
+}
+function ProjectContactCard() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+    >
+      <ContactForm />
+    </motion.div>
+  )
 }
