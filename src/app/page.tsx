@@ -15,11 +15,13 @@ import { experiences } from "@/lib/experience";
 import { projects } from "@/lib/project";
 import ProjectCard from "@/components/projectCard";
 import { skills } from "@/lib/skills";
+import Header from "@/components/site-header";
 export default function Home() {
   console.log({ motion, Badge, Link, ArrowRight, Mail, Image });
   return (
     <div className="min-h-dvh flex flex-col">
       <SiteBackground />
+      <Header />
       <main className="flex-1">
         <Hero />
         <Section id="sobre-mi" title="Sobre mí" subtitle="Conoce al desarrollador">

@@ -33,7 +33,7 @@ export default function Header({ showBorder = true }: { showBorder?: boolean } =
         >
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                 <Link href="/" className="font-semibold tracking-tight text-zinc-100">
-                    <span className="text-emerald-400">{"<dev/>"}</span> Portfolio
+                    <span className="text-emerald-400">{"<dev/>"}</span> Portfolio Alvaro Code
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-6" aria-label="Navegación principal">
