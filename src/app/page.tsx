@@ -69,7 +69,7 @@ export default function Home() {
                 </Link>
               </div>
             </motion.div>
-            <motion.div
+            {/* <motion.div
               className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-black/30"
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -84,7 +84,7 @@ export default function Home() {
                 priority
               />
               <div className="absolute inset-0 ring-1 ring-white/10 rounded-2xl pointer-events-none" />
-            </motion.div>
+            </motion.div> */}
 
           </div>
         </Section>
